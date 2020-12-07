@@ -4,7 +4,7 @@ This repository contains Sedia conformance documents.
 
 # License
 
-Copyright Sedia Medizintechn& ik SA Flux Software, Inc.
+Copyright Sedia Medizintechnik SA & Flux Software, Inc.
 
 # Notes
 
