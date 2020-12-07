@@ -9,6 +9,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- (HL7) Explicit reference to absence of discrete OBX data
+
+### Fixed
+
+- (HL7) Corrected a typo
+
+### Added
+
 - package.json and .gitignore
 
 ## [1.0.0] - 2020-12-07

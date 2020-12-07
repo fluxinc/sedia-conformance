@@ -1,20 +1,20 @@
 # Sedia :productName
+
 HL7 Conformance Statement
 Version 1.0.0
 
-
 2020-12-07
-
 
 :mailingAddress
 
-
 ## Conformance Statement Overview
+
 Sedia :productName is a :productDescription
 
 Sedia :productName receives HL7 v2.x ORM messages, and sends ORU messages with the aid of an HL7 broker based on the NHAPI .NET library.
 
 ## Introduction
+
 This HL7 Conformance Statement specifies the behaviour and functionality of the :productName system, with regard to supported HL7 Messages and Message Segments. : productName is an :productDescription.
 
 Contact Address
@@ -23,7 +23,7 @@ Contact Address
 ## Revision History
 
 | Document Version | Date of Issue | Author         | Description     |
-|------------------|---------------|----------------|-----------------|
+| ---------------- | ------------- | -------------- | --------------- |
 | 1.0.0            | 2020-12-07    | Wojtek Grabski | Initial version |
 
 ## Audience
@@ -36,7 +36,7 @@ The scope of this HL7 Conformance Statement is to facilitate integration between
 
 This Conformance Statement is not supposed to replace validation with other HL7 equipment to ensure proper exchange of intended information. In fact, the user should be aware of the following important issues:
 
-- The comparison of different Conformance Statements is just the first step towards assessing interconnectivity and interoperability between the product and other HL7 conformant equipment. 
+- The comparison of different Conformance Statements is just the first step towards assessing interconnectivity and interoperability between the product and other HL7 conformant equipment.
 - Test procedures should be defined and executed to validate the required level of interoperability with specific compatible HL7 equipment, as established by the healthcare facility.
 
 ## Use Case Model
@@ -62,10 +62,11 @@ MSH PID PV1 [ PV2 ] ORC [ OBR ] [ { OBX } ]
 MSH PID PV1 [ PV2 ] ORC OBR [ { OBX } ]
 
 ## Static Definitions - Message Level
+
 ### ORM^O01
 
 | Segment     | ORM Message                | Usage | Cardinality | Comment |
-|-------------|----------------------------|-------|-------------|---------|
+| ----------- | -------------------------- | ----- | ----------- | ------- |
 | MSH         | Message Header             | R     | [1..1]      |         |
 | PID         | Patient Identification     | R     | [1..1]      |         |
 | PV1         | Patient Visit              | RE    | [1..1]      |         |
@@ -77,7 +78,7 @@ MSH PID PV1 [ PV2 ] ORC OBR [ { OBX } ]
 ### ORU^R01
 
 | Segment     | ORM Message                | Usage | Cardinality | Comment                     |
-|-------------|----------------------------|-------|-------------|-----------------------------|
+| ----------- | -------------------------- | ----- | ----------- | --------------------------- |
 | MSH         | Message Header             | R     | [1..1]      |                             |
 | PID         | Patient Identification     | R     | [1..1]      |                             |
 | PV1         | Patient Visit              | RE    | [1..1]      |                             |
@@ -87,10 +88,11 @@ MSH PID PV1 [ PV2 ] ORC OBR [ { OBX } ]
 | [ { OBX } ] | Observation / Result       | O     | [0..*]      |                             |
 
 ## Static Definitions - Segment Level
+
 ### MSH
 
 | Sequence | Name                                    | Usage | Cardinality | Comment                               |
-|----------|-----------------------------------------|-------|-------------|---------------------------------------|
+| -------- | --------------------------------------- | ----- | ----------- | ------------------------------------- |
 | 1        | Field Separator                         | R     | [1..1]      |                                       |
 | 2        | Encoding Characters                     | R     | [1..1]      |                                       |
 | 3        | Sending Application                     | R     | [1..1]      | Sender in ORM becomes Receiver in ORU |
@@ -113,8 +115,9 @@ MSH PID PV1 [ PV2 ] ORC OBR [ { OBX } ]
 | 20       | Alternate Character Set Handling Scheme | O     | [0..1]      |                                       |
 
 ### PID
+
 | Sequence | Name                              | Usage | Cardinality | Comment |
-|----------|-----------------------------------|-------|-------------|---------|
+| -------- | --------------------------------- | ----- | ----------- | ------- |
 | 1        | Set ID - PID                      | O     | [0..1]      |         |
 | 2        | Patient ID                        | B     | [0..1]      |         |
 | 3        | Patient Identifier List           | R     | [1..*]      |         |
@@ -147,14 +150,17 @@ MSH PID PV1 [ PV2 ] ORC OBR [ { OBX } ]
 | 30       | Patient Death Indicator           | O     | [0..1]      |         |
 
 ### PV1
+
 PV1 segments are ignored by :productName, however the segment will be stored and returned to the ORU as-is.
 
 ### PV2
+
 PV2 segments are ignored by :productName, however the segment will be stored and returned to the ORU as-is.
 
 ### ORC
+
 | Sequence | Name                             | Usage | Cardinality | Comment |
-|----------|----------------------------------|-------|-------------|---------|
+| -------- | -------------------------------- | ----- | ----------- | ------- |
 | 1        | Order Control                    | R     | [1..1]      |         |
 | 2        | Placer Order Number              | O     | [0..1]      |         |
 | 3        | Filler Order Number              | O     | [0..1]      |         |
@@ -181,72 +187,78 @@ PV2 segments are ignored by :productName, however the segment will be stored and
 | 24       | Ordering Provider Address        | O     | [0..*]      |         |
 
 ### OBR
-| Sequence | Name                                     | Usage | Cardinality | Comment                                                      |
-|----------|------------------------------------------|-------|-------------|--------------------------------------------------------------|
-| 1        | Set ID - OBR                             | O     | [0..1]      |                                                              |
-| 2        | Placer Order Number                      | O     | [0..1]      |                                                              |
-| 3        | Filler Order Number                      | O     | [0..1]      |                                                              |
-| 4        | University Service ID                    | R     | [1..1]      |                                                              |
-| 5        | Priority                                 | O     | [0..1]      |                                                              |
-| 6        | Requested Date/Time                      | O     | [0..1]      |                                                              |
-| 7        | Observation Date/Time                    | O     | [0..1]      |                                                              |
-| 8        | Observation End Date/Time                | O     | [0..1]      |                                                              |
-| 9        | Collection VOlume                        | O     | [0..1]      |                                                              |
-| 10       | Collector Identifier                     | O     | [0..*]      |                                                              |
-| 11       | Specimen Action COde                     | O     | [0..1]      |                                                              |
-| 12       | Danger Code                              | O     | [0..1]      |                                                              |
-| 13       | Relevant Clinical Info                   | O     | [0..1]      |                                                              |
-|          | Specimen Received Date/Time              | O     | [0..1]      |                                                              |
-| 14       | Speciment Source                         | O     | [0..1]      |                                                              |
-| 15       |                                          |       | [0..1]      |                                                              |
-| 16       | Ordering Provider                        | O     |             |                                                              |
-| 17       | Order Callback Phone Number              | O     | [0..2]      |                                                              |
-| 18       | Placer Field 1                           | O     | [0..1]      |                                                              |
-| 19       | Placer Field 2                           | O     | [0..1]      |                                                              |
-| 20       | Filler Field 1                           | O     | [0..1]      |                                                              |
-| 21       | Filler Field 2                           | O     | [0..1]      |                                                              |
-| 22       | Results Report/Status Change - Date/Time | O     | [0..1]      |                                                              |
-| 23       | Charge to Practice                       | O     | [0..1]      |                                                              |
-| 24       | Diagnostic Service Section ID            | O     | [0..1]      |                                                              |
+
+| Sequence | Name                                     | Usage | Cardinality | Comment                                                       |
+| -------- | ---------------------------------------- | ----- | ----------- | ------------------------------------------------------------- |
+| 1        | Set ID - OBR                             | O     | [0..1]      |                                                               |
+| 2        | Placer Order Number                      | O     | [0..1]      |                                                               |
+| 3        | Filler Order Number                      | O     | [0..1]      |                                                               |
+| 4        | University Service ID                    | R     | [1..1]      |                                                               |
+| 5        | Priority                                 | O     | [0..1]      |                                                               |
+| 6        | Requested Date/Time                      | O     | [0..1]      |                                                               |
+| 7        | Observation Date/Time                    | O     | [0..1]      |                                                               |
+| 8        | Observation End Date/Time                | O     | [0..1]      |                                                               |
+| 9        | Collection VOlume                        | O     | [0..1]      |                                                               |
+| 10       | Collector Identifier                     | O     | [0..*]      |                                                               |
+| 11       | Specimen Action COde                     | O     | [0..1]      |                                                               |
+| 12       | Danger Code                              | O     | [0..1]      |                                                               |
+| 13       | Relevant Clinical Info                   | O     | [0..1]      |                                                               |
+|          | Specimen Received Date/Time              | O     | [0..1]      |                                                               |
+| 14       | Speciment Source                         | O     | [0..1]      |                                                               |
+| 15       |                                          |       | [0..1]      |                                                               |
+| 16       | Ordering Provider                        | O     |             |                                                               |
+| 17       | Order Callback Phone Number              | O     | [0..2]      |                                                               |
+| 18       | Placer Field 1                           | O     | [0..1]      |                                                               |
+| 19       | Placer Field 2                           | O     | [0..1]      |                                                               |
+| 20       | Filler Field 1                           | O     | [0..1]      |                                                               |
+| 21       | Filler Field 2                           | O     | [0..1]      |                                                               |
+| 22       | Results Report/Status Change - Date/Time | O     | [0..1]      |                                                               |
+| 23       | Charge to Practice                       | O     | [0..1]      |                                                               |
+| 24       | Diagnostic Service Section ID            | O     | [0..1]      |                                                               |
 | 25       | Result Status                            | O     | [0..1]      | “F” in ORU message, and “C” for Correction (Addendum) reports |
-| 26       | Parent Status                            | O     | [0..1]      |                                                              |
-| 27       | Quantity/Timing                          | O     | [0..*]      |                                                              |
-| 28       | Result Copies To                         | O     | [0..5]      |                                                              |
-| 29       | Parent                                   | O     | [0..1]      |                                                              |
-| 30       | Transportation Mode                      | O     | [0..1]      |                                                              |
-| 31       | Reason for Study                         | O     | [0..*]      |                                                              |
-| 32       | Principal Result Interpreter             | O     | [0..1]      |                                                              |
-| 33       | Assistant Result Interpreter             | O     | [0..*]      |                                                              |
-| 34       | Technician                               | O     | [0..*]      |                                                              |
-| 35       | Transcriptionist                         | O     | [0..*]      |                                                              |
-| 36       | Scheduled Date/Time                      | O     | [0..1]      |                                                              |
-| 37       | Number of Sample Containers              | O     | [0..1]      |                                                              |
-| 38       | Transport Logistics of Collected Sample  | O     | [0..*]      |                                                              |
-| 39       | Collector’s Comment                      | O     | [0..*]      |                                                              |
-| 40       | Transport Arrangement Responsibility     | O     | [0..1]      |                                                              |
-| 41       | Transport Arranged                       | O     | [0..1]      |                                                              |
-| 42       | Escort Required                          | O     | [0..1]      |                                                              |
-| 43       | Planned Patient Transport Comment        | O     | [0..*]      |                                                              |
-| 44       | Procedure Code                           | O     | [0..1]      |                                                              |
-| 45       | Procedure Code Modifier                  | O     | [0..*]      |                                                              |
+| 26       | Parent Status                            | O     | [0..1]      |                                                               |
+| 27       | Quantity/Timing                          | O     | [0..*]      |                                                               |
+| 28       | Result Copies To                         | O     | [0..5]      |                                                               |
+| 29       | Parent                                   | O     | [0..1]      |                                                               |
+| 30       | Transportation Mode                      | O     | [0..1]      |                                                               |
+| 31       | Reason for Study                         | O     | [0..*]      |                                                               |
+| 32       | Principal Result Interpreter             | O     | [0..1]      |                                                               |
+| 33       | Assistant Result Interpreter             | O     | [0..*]      |                                                               |
+| 34       | Technician                               | O     | [0..*]      |                                                               |
+| 35       | Transcriptionist                         | O     | [0..*]      |                                                               |
+| 36       | Scheduled Date/Time                      | O     | [0..1]      |                                                               |
+| 37       | Number of Sample Containers              | O     | [0..1]      |                                                               |
+| 38       | Transport Logistics of Collected Sample  | O     | [0..*]      |                                                               |
+| 39       | Collector’s Comment                      | O     | [0..*]      |                                                               |
+| 40       | Transport Arrangement Responsibility     | O     | [0..1]      |                                                               |
+| 41       | Transport Arranged                       | O     | [0..1]      |                                                               |
+| 42       | Escort Required                          | O     | [0..1]      |                                                               |
+| 43       | Planned Patient Transport Comment        | O     | [0..*]      |                                                               |
+| 44       | Procedure Code                           | O     | [0..1]      |                                                               |
+| 45       | Procedure Code Modifier                  | O     | [0..*]      |                                                               |
 
 ### OBX
-| Sequence | Name                        | Usage | Cardinality | Comment                                                      |
-|----------|-----------------------------|-------|-------------|--------------------------------------------------------------|
-| 1        | Set ID - OBX                | O     |             |                                                              |
-| 2        | Value Type                  | O     | [0..1]      | ORU contains ‘ED’ for Base640-encoded PDF data.              |
-| 3        | Observation Identifier      | R     | [1..1]      |                                                              |
-| 4        | Obersation Sub-ID           | O     | [0..1]      |                                                              |
+
+| Sequence | Name                        | Usage | Cardinality | Comment                                                                                                                                                                                                |
+| -------- | --------------------------- | ----- | ----------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 1        | Set ID - OBX                | O     |             |                                                                                                                                                                                                        |
+| 2        | Value Type                  | O     | [0..1]      | ORU contains ‘ED’ for Base64-encoded PDF data.                                                                                                                                                         |
+| 3        | Observation Identifier      | R     | [1..1]      |                                                                                                                                                                                                        |
+| 4        | Obersation Sub-ID           | O     | [0..1]      |                                                                                                                                                                                                        |
 | 5        | Observation Value           | O     | [0..*]      | Subfield 1 contains “Adobe Acrobat”, subfield 2 contains “PDF”, subfield 4 contains “Base64” indicating that this data is encapsulated using Base64 encoding, and subfield 5 contains the actual data. |
-| 6        | Units                       | O     | [0..1]      |                                                              |
-| 7        | References Range            | O     | [0..1]      |                                                              |
-| 8        | Abnormal Flags              | O     | [0..5]      |                                                              |
-| 9        | Probability                 | O     | [0..1]      |                                                              |
-| 10       | Nature of Abnormal Test     | O     | [0..*]      |                                                              |
-| 11       | Observation Result Tatus    | R     | [1..1]      | “F” in ORU message, and “C” for Correction (Addendum) reports |
-| 12       | Date Last Obs Normal Values |       | [0..1]      |                                                              |
-| 13       | User Defined Access Checks  |       | [0..1]      |                                                              |
-| 14       | Date/Time of Observation    |       | [0..1]      |                                                              |
-| 15       | Producer’s ID               |       | [0..1]      |                                                              |
-| 16       | Responsible Observer        |       | [0..*]      |                                                              |
-| 17       | Observation Method          |       | [0..*]      |                                                              |
+| 6        | Units                       | O     | [0..1]      |                                                                                                                                                                                                        |
+| 7        | References Range            | O     | [0..1]      |                                                                                                                                                                                                        |
+| 8        | Abnormal Flags              | O     | [0..5]      |                                                                                                                                                                                                        |
+| 9        | Probability                 | O     | [0..1]      |                                                                                                                                                                                                        |
+| 10       | Nature of Abnormal Test     | O     | [0..*]      |                                                                                                                                                                                                        |
+| 11       | Observation Result Tatus    | R     | [1..1]      | “F” in ORU message, and “C” for Correction (Addendum) reports                                                                                                                                          |
+| 12       | Date Last Obs Normal Values |       | [0..1]      |                                                                                                                                                                                                        |
+| 13       | User Defined Access Checks  |       | [0..1]      |                                                                                                                                                                                                        |
+| 14       | Date/Time of Observation    |       | [0..1]      |                                                                                                                                                                                                        |
+| 15       | Producer’s ID               |       | [0..1]      |                                                                                                                                                                                                        |
+| 16       | Responsible Observer        |       | [0..*]      |                                                                                                                                                                                                        |
+| 17       | Observation Method          |       | [0..*]      |                                                                                                                                                                                                        |
+
+### OBX-3 Observation Identifiers for Discrete Data
+
+No discrete OBX data is transmitted beyond encapsulated Base64-encoded PDF.
