@@ -1,0 +1,20 @@
+{
+  "name": "sedia-conformance",
+  "authors": [
+    {
+      "name": "Wojtek Grabski",
+      "email": "wojtek@fluxinc.ca"
+    }
+  ],
+  "version": "1.0.0",
+  "license": "UNLICENSED",
+  "description": "IHE Conformance statements for Sedia software.",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
