@@ -1,24 +1,28 @@
-# Sedia :productName
+# Sedia Sedialog
 
 HL7 Conformance Statement
 Version 1.0.0
 
 2020-12-07
 
-:mailingAddress
+Sedia Medizintechnik SA
+Route André-Piller 21
+CH - 1762 Givisiez
 
 ## Conformance Statement Overview
 
-Sedia :productName is a :productDescription
+Sedia Sedialog is a software for the recording of urodynamic and uroflow measurements.
 
-Sedia :productName receives HL7 v2.x ORM messages, and sends ORU messages with the aid of an HL7 broker based on the NHAPI .NET library.
+Sedia Sedialog receives HL7 v2.x ORM messages, and sends ORU messages with the aid of an HL7 broker based on the NHAPI .NET library.
 
 ## Introduction
 
-This HL7 Conformance Statement specifies the behaviour and functionality of the :productName system, with regard to supported HL7 Messages and Message Segments. : productName is an :productDescription.
+This HL7 Conformance Statement specifies the behaviour and functionality of the Sedialog software, with regard to supported HL7 Messages and Message Segments. Sedialog is an a software for the recording of urodynamic and uroflow measurements..
 
 Contact Address
-:mailingAddress
+Sedia Medizintechnik SA
+Route André-Piller 21
+CH - 1762 Givisiez
 
 ## Revision History
 
@@ -28,11 +32,11 @@ Contact Address
 
 ## Audience
 
-This document is written for the people that need to understand how :productName will integrate into their healthcare facility. This includes both those responsible for overall workflow network policy and architecture, as well as integrators who need to have a detailed understanding of the HL7 features of the product. Integrators are expected to fully understand all the HL7 terminology, how the tables in this document relate to the product’s functionality, and how that functionality integrates with other devices that support compatible HL7 features.
+This document is written for the people that need to understand how Sedialog will integrate into their healthcare facility. This includes both those responsible for overall workflow network policy and architecture, as well as integrators who need to have a detailed understanding of the HL7 features of the product. Integrators are expected to fully understand all the HL7 terminology, how the tables in this document relate to the product’s functionality, and how that functionality integrates with other devices that support compatible HL7 features.
 
 ## Remarks
 
-The scope of this HL7 Conformance Statement is to facilitate integration between :productName and other HL7 products. The Conformance Statement should be read and understood in conjunction with the HL7 v2.x Standard. HL7 by itself does not guarantee interoperability. The Conformance Statement does, however, facilitate a first-level comparison for interoperability between different applications supporting compatible HL7 functionality.
+The scope of this HL7 Conformance Statement is to facilitate integration between Sedialog and other HL7 products. The Conformance Statement should be read and understood in conjunction with the HL7 v2.x Standard. HL7 by itself does not guarantee interoperability. The Conformance Statement does, however, facilitate a first-level comparison for interoperability between different applications supporting compatible HL7 functionality.
 
 This Conformance Statement is not supposed to replace validation with other HL7 equipment to ensure proper exchange of intended information. In fact, the user should be aware of the following important issues:
 
@@ -41,13 +45,13 @@ This Conformance Statement is not supposed to replace validation with other HL7 
 
 ## Use Case Model
 
-:productName can receive ORM (Order Message) from a HIS, RIS, or general HL7 Engine indicating that a patient was scheduled for an MR or CT Scan and the order is complete. These messages should be received prior to actual image or measurement data being transferred from cvi42 or other analysis software.
+Sedialog can receive ORM (Order Message) from a HIS, RIS, or general HL7 Engine indicating that a patient was scheduled for an MR or CT Scan and the order is complete. These messages should be received prior to actual image or measurement data being transferred from cvi42 or other analysis software.
 
 When a report is changed to a Finalized or Addendum state, an ORU (Observation Message) is returned to an upstream HIS, RIS, or HL7 Engine, presumably but not necessarily the same system that originated the transaction with an ORM.
 
 ## Dynamic Interaction Model
 
-ORM messages originate with a HIS, RIS or HL7 Engine upstream from the :productName server. Received ORM messages are stored in :productName’s database and matched later to incoming DICOM-sourced data.
+ORM messages originate with a HIS, RIS or HL7 Engine upstream from the Sedialog server. Received ORM messages are stored in Sedialog’s database and matched later to incoming DICOM-sourced data.
 
 ORU messages are later produced when a physician creates a Finalized or Addendum report and are returned to an HL7 node, presumably the one that created the ORM message. Typically report data will be included either by embedding text or encoded data, or by including reference pointers to report data at a local or network location.
 
@@ -151,11 +155,11 @@ MSH PID PV1 [ PV2 ] ORC OBR [ { OBX } ]
 
 ### PV1
 
-PV1 segments are ignored by :productName, however the segment will be stored and returned to the ORU as-is.
+PV1 segments are ignored by Sedialog, however the segment will be stored and returned to the ORU as-is.
 
 ### PV2
 
-PV2 segments are ignored by :productName, however the segment will be stored and returned to the ORU as-is.
+PV2 segments are ignored by Sedialog, however the segment will be stored and returned to the ORU as-is.
 
 ### ORC
 
